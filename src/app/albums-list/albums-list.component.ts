@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { authenticate } from 'src/spotify/spotify-auth';
 import { Album } from '../interfaces/album.interface';
-import { getAlbums } from 'src/spotify/spotify-api';
+import { getAllAlbums } from 'src/spotify/spotify-api';
+import { LocalDB } from 'src/local-db/local-db';
 
 @Component({
   selector: 'app-albums-list',
@@ -17,14 +18,9 @@ export class AlbumsListComponent {
 
     if (code) {
       await authenticate(code);
-      const albumsResponse = await getAlbums();
-      this.albums = albumsResponse.map((a: any) => {
-        return {
-          title: a.album.name,
-          artist: a.album.artists[0].name,
-          imageUrl: a.album.images[1].url,
-        };
-      });
+      //const albumsResponse = await getAllAlbums();
+      //LocalDB.sync(albumsResponse);
+      this.albums = LocalDB.loadAll();
     }
   }
 }
