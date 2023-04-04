@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   background-color: #121212;
+  font-family: CircularBook;
+}
+
+@font-face {
+  font-family: "CircularBook";
+  src: url("../assets/fonts/CircularBook.otf");
 }
