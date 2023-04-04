@@ -19,15 +19,15 @@
 }
 
 .titleText {
-  font-size: xx-large;
-  margin: 4px 0 4px 0;
+  font-size: x-large;
+  margin: 4px auto 4px 0;
   color: white;
   font-weight: 600;
 }
 
 .artistText {
   font-size: large;
-  margin: 4px 0 4px 0;
+  margin: 4px auto 4px 0;
   color: #939393;
 }
 
