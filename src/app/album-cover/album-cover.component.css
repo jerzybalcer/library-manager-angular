@@ -20,7 +20,7 @@
 
 .titleText {
   font-size: x-large;
-  margin: 4px auto 4px 0;
+  margin: 8px auto 4px 0;
   color: white;
   font-weight: 600;
 }
@@ -29,6 +29,13 @@
   font-size: large;
   margin: 4px auto 4px 0;
   color: #939393;
+}
+
+.overflowDots {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+  white-space: nowrap;
 }
 
 img {

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { authenticate } from 'src/spotify/spotify-auth';
+import { Album } from '../interfaces/album.interface';
+import { getAlbums } from 'src/spotify/spotify-api';
 
 @Component({
   selector: 'app-albums-list',
@@ -6,30 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./albums-list.component.css'],
 })
 export class AlbumsListComponent {
-  albums = [
-    {
-      artist: 'O.S.T.R.',
-      imageUrl:
-        'https://i.scdn.co/image/ab67616d00001e02d4fa4e1a9b1e91c978b52647',
-      title: 'HAOS',
-    },
-    {
-      artist: 'Kuban',
-      imageUrl:
-        'https://i.scdn.co/image/ab67616d00001e029486fb8846b49c619bce4f46',
-      title: 'spokój.',
-    },
-    {
-      artist: 'Ruben Gonzalez',
-      imageUrl:
-        'https://i.scdn.co/image/ab67616d00001e0270d457d40ad73285e35901d2',
-      title: 'Introducing',
-    },
-    {
-      artist: 'club2020',
-      imageUrl:
-        'https://i.scdn.co/image/ab67616d00001e02d2b86b3469b70a6945fdaa7d',
-      title: 'club2020',
-    },
-  ];
+  albums: Album[] = [];
+
+  async ngOnInit() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let code = urlParams.get('code');
+
+    if (code) {
+      await authenticate(code);
+      const albumsResponse = await getAlbums();
+      this.albums = albumsResponse.map((a: any) => {
+        return {
+          title: a.album.name,
+          artist: a.album.artists[0].name,
+          imageUrl: a.album.images[1].url,
+        };
+      });
+    }
+  }
 }

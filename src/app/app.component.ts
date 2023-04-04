@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { authorize } from 'src/spotify/spotify-auth';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'library-manager-angular';
+
+  onLogin = () => {
+    authorize();
+  };
 }
