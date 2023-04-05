@@ -1,4 +1,11 @@
-<button (click)="onLogin()">
-    Log-in
-</button>
-<app-albums-list />
+<div class="root">
+    <div class="navbar">
+        <app-button content='LOG IN WITH SPOTIFY' [onClick]="onLogin" />
+    </div>
+
+    <div class="content">
+        <app-albums-list />
+        <app-album-details />
+    </div>
+</div>
+

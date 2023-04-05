@@ -1,0 +1,7 @@
+.panel {
+  background-color: #181818;
+  width: 35vw;
+  height: 100vh;
+  position: fixed;
+  border-radius: 8px;
+}

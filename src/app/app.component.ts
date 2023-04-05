@@ -8,8 +8,13 @@ import { authorize } from 'src/spotify/spotify-auth';
 })
 export class AppComponent {
   title = 'library-manager-angular';
+  isMenuOpen = false;
 
   onLogin = () => {
     authorize();
+  };
+
+  toggleMenu = (state: boolean) => {
+    this.isMenuOpen = state;
   };
 }
