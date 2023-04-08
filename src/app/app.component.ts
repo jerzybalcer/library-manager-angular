@@ -1,20 +1,25 @@
+import { SpotifyAuth } from './../spotify/spotify-auth';
 import { Component } from '@angular/core';
-import { authorize } from 'src/spotify/spotify-auth';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [SpotifyAuth]
 })
 export class AppComponent {
-  title = 'library-manager-angular';
-  isMenuOpen = false;
+  constructor(private spotifyAuth: SpotifyAuth) {}
+
+  async ngOnInit(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const authorizationCode = urlParams.get('code');
+
+    if(authorizationCode){
+      await this.spotifyAuth.authenticate(authorizationCode);
+    }
+  }
 
   onLogin = () => {
-    authorize();
-  };
-
-  toggleMenu = (state: boolean) => {
-    this.isMenuOpen = state;
+    this.spotifyAuth.authorize();
   };
 }

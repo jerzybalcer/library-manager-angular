@@ -1,7 +1,9 @@
+import { Injectable } from '@angular/core';
 import { Album } from 'src/app/interfaces/album.interface';
 
+@Injectable()
 export class LocalDB {
-  static sync(spotifyAlbums: any[]) {
+  sync(spotifyAlbums: any[]) {
     const localAlbums = this.loadAll();
 
     const syncedAlbums = localAlbums;
@@ -17,7 +19,7 @@ export class LocalDB {
         syncedAlbums.push({
           title: spotify.album.name,
           artist: spotify.album.artists[0].name,
-          imageUrl: spotify.album.images[1].url,
+          imageUrl: spotify.album.images[0].url,
         });
       }
     });
@@ -37,7 +39,7 @@ export class LocalDB {
     localStorage.setItem('albums', JSON.stringify(syncedAlbums));
   }
 
-  static loadAll(): Album[] {
+  loadAll(): Album[] {
     return JSON.parse(localStorage.getItem('albums') ?? '[]');
   }
 }
