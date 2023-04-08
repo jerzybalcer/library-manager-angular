@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Album } from 'src/app/interfaces/album.interface';
+import { Album } from 'src/interfaces/album.interface';
 
 @Injectable()
 export class LocalDB {

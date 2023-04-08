@@ -1,4 +1,4 @@
-import { SpotifyAuth } from './../spotify/spotify-auth';
+import { SpotifyAuth } from '../../services/spotify/spotify-auth';
 import { Component } from '@angular/core';
 
 @Component({
