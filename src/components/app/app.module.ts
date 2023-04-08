@@ -6,9 +6,10 @@ import { AlbumsListComponent } from '../albums-list/albums-list.component';
 import { AlbumCoverComponent } from '../album-cover/album-cover.component';
 import { AlbumDetailsComponent } from '../album-details/album-details.component';
 import { ButtonComponent } from '../button/button.component';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 @NgModule({
-  declarations: [AppComponent, AlbumsListComponent, AlbumCoverComponent, AlbumDetailsComponent, ButtonComponent],
+  declarations: [AppComponent, AlbumsListComponent, AlbumCoverComponent, AlbumDetailsComponent, ButtonComponent, UserInfoComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],

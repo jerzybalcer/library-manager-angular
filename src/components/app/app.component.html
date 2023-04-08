@@ -1,11 +1,19 @@
 <div class="root">
-    <div class="navbar">
+    <div *ngIf="!isAuthenticated" class="login">
+        <h1>Spotify Library Manager</h1>
         <app-button content='LOG IN WITH SPOTIFY' [onClick]="onLogin" />
     </div>
 
-    <div class="content">
-        <app-albums-list />
-        <app-album-details />
+    <div *ngIf="isAuthenticated">
+        <div class="navbar">
+            <div class="toolbar"></div>
+            <app-user-info />
+        </div>
+    
+        <div class="content">
+            <app-albums-list />
+            <app-album-details />
+        </div>
     </div>
 </div>
 

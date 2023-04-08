@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
   providers: [SpotifyAuth]
 })
 export class AppComponent {
+  isAuthenticated: boolean = true;
+
   constructor(private spotifyAuth: SpotifyAuth) {}
 
   async ngOnInit(){
@@ -17,6 +19,8 @@ export class AppComponent {
     if(authorizationCode){
       await this.spotifyAuth.authenticate(authorizationCode);
     }
+
+    this.isAuthenticated = await this.spotifyAuth.isAuthenticated();
   }
 
   onLogin = () => {

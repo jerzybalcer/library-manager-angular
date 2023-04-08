@@ -1,6 +1,4 @@
 .root {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,10 +7,23 @@
 .navbar {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 4px;
 }
 
 .content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.login {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
