@@ -1,7 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 html {
   background-color: #121212;
   font-family: CircularBook;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
 }
 
 @font-face {

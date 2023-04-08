@@ -5,6 +5,24 @@ export class SpotifyAuth {
   private readonly ClientId = '1a23516c50aa48a982b773772fa7447f';
   private readonly RedirectUri = 'http://localhost:4200';
   
+  isAuthenticated = async (): Promise<boolean> => {
+    const accessToken = localStorage.getItem('access_token');
+
+    if(!accessToken) return false;
+
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + accessToken,
+        },
+      }
+    );
+
+    if(response.ok) return true;
+    else return false;
+  } 
+
   authorize = () => {
     const codeVerifier = this.generateRandomString(128);
   
