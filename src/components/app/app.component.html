@@ -11,8 +11,8 @@
         </div>
     
         <div class="content">
-            <app-albums-list />
-            <app-album-details />
+            <app-albums-list (chooseAlbumEvent)="onChooseAlbum($event)" />
+            <app-album-details [album]="chosenAlbum"/>
         </div>
     </div>
 </div>

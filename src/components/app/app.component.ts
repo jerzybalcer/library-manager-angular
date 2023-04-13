@@ -1,3 +1,4 @@
+import { Album } from 'src/interfaces/album.interface';
 import { SpotifyAuth } from '../../services/spotify/spotify-auth';
 import { Component } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isAuthenticated: boolean = true;
+  chosenAlbum: Album = {} as Album;
 
   constructor(private spotifyAuth: SpotifyAuth) {}
 
@@ -26,4 +28,8 @@ export class AppComponent {
   onLogin = () => {
     this.spotifyAuth.authorize();
   };
+
+  onChooseAlbum(album: Album) {
+    this.chosenAlbum = album;
+  }
 }

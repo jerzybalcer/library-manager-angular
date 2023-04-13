@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Album } from '../../interfaces/album.interface';
 
 @Component({
@@ -8,4 +8,10 @@ import { Album } from '../../interfaces/album.interface';
 })
 export class AlbumCoverComponent {
   @Input() album: Album = {} as Album;
+
+  @Output() chooseAlbumEvent: EventEmitter<Album> = new EventEmitter<Album>();
+
+  onClickCover() {
+    this.chooseAlbumEvent.emit(this.album);
+  }
 }
