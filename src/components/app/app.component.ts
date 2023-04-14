@@ -1,6 +1,6 @@
 import { Album } from 'src/interfaces/album.interface';
 import { SpotifyAuth } from '../../services/spotify/spotify-auth';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +20,7 @@ export class AppComponent {
 
     if(authorizationCode){
       await this.spotifyAuth.authenticate(authorizationCode);
+      window.location.href = '';
     }
 
     this.isAuthenticated = await this.spotifyAuth.isAuthenticated();

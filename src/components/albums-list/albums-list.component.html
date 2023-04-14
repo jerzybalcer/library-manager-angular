@@ -1,5 +1,5 @@
 <div class="albumList" >
-    <div *ngFor='let album of albums;' class="albumListItem">
+    <div *ngFor='let album of visibleAlbums;' class="albumListItem">
         <app-album-cover [album]="album" (chooseAlbumEvent)="onChooseAlbum($event)" />
     </div>
 </div>

@@ -6,12 +6,12 @@
 
     <div *ngIf="isAuthenticated">
         <div class="navbar">
-            <div class="toolbar"></div>
+            <app-toolbar class="toolbar" (searchEvent)="list.onSearch($event)"/>
             <app-user-info />
         </div>
     
         <div class="content">
-            <app-albums-list (chooseAlbumEvent)="onChooseAlbum($event)" />
+            <app-albums-list #list (chooseAlbumEvent)="onChooseAlbum($event)" />
             <app-album-details [album]="chosenAlbum"/>
         </div>
     </div>
