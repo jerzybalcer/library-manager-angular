@@ -5,9 +5,9 @@
   align-items: center;
   background-color: #181818;
   transition: background-color 0.3s ease;
-  margin: 8px;
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
 }
 
 .container:hover {
@@ -16,23 +16,32 @@
   cursor: pointer;
 }
 
+.underCoverText {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 90%;
+  margin-bottom: 16px;
+}
+
 .titleText {
   font-size: x-large;
-  margin: 2px auto 2px 16px;
+  margin: 0 0 8px 0;
   color: white;
   font-weight: 600;
 }
 
 .artistText {
   font-size: large;
-  margin: 0 auto 8px 16px;
+  margin: 0;
   color: #939393;
 }
 
 .overflowDots {
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 250px;
+  width: 100%;
   white-space: nowrap;
 }
 
@@ -41,6 +50,6 @@ img {
   border-radius: 4px;
   object-fit: contain;
   overflow: hidden;
-  width: 250px;
+  width: 90%;
   margin: 16px;
 }

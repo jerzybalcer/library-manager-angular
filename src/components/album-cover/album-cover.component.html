@@ -1,10 +1,12 @@
 <div class="container" (click)="onClickCover()">
     <img src={{album.imageUrl}}>
 
-    <p class="titleText overflowDots">
-        {{album.title}}
-    </p>
-    <p class="artistText overflowDots">
-        {{album.artist}}
-    </p>
+    <div class="underCoverText">
+        <p class="titleText overflowDots">
+            {{album.title}}
+        </p>
+        <p class="artistText overflowDots">
+            {{album.artist}}
+        </p>
+    </div>
 </div>

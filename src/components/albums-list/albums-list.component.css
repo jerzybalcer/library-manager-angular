@@ -1,4 +1,4 @@
-.list {
+.albumList {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -6,4 +6,9 @@
   max-width: 65vw;
   overflow-y: scroll;
   height: 90vh;
+}
+
+.albumListItem {
+  width: calc(33.33% - 16px);
+  margin: 8px;
 }
