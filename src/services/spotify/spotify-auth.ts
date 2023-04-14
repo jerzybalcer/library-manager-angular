@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Injectable()
-export class SpotifyAuth {
-  private readonly ClientId = '1a23516c50aa48a982b773772fa7447f';
-  private readonly RedirectUri = 'http://localhost:4200';
-  
+export class SpotifyAuth {  
   isAuthenticated = async (): Promise<boolean> => {
     const accessToken = localStorage.getItem('access_token');
 
@@ -34,9 +32,9 @@ export class SpotifyAuth {
   
       const args = new URLSearchParams({
         response_type: 'code',
-        client_id: this.ClientId,
+        client_id: environment.SpotifyClientId,
         scope: scope,
-        redirect_uri: this.RedirectUri,
+        redirect_uri: environment.SpotifyRedirectUri,
         state: state,
         code_challenge_method: 'S256',
         code_challenge: codeChallenge,
@@ -52,8 +50,8 @@ export class SpotifyAuth {
     const body = new URLSearchParams({
       grant_type: 'authorization_code',
       code: authorizationCode,
-      redirect_uri: this.RedirectUri,
-      client_id: this.ClientId,
+      redirect_uri: environment.SpotifyRedirectUri,
+      client_id: environment.SpotifyClientId,
       code_verifier: codeVerifier ?? '',
     });
   
