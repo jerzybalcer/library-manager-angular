@@ -20,6 +20,9 @@ export class LocalDB {
           title: spotify.album.name,
           artist: spotify.album.artists[0].name,
           imageUrl: spotify.album.images[0].url,
+          spotifyUrl: spotify.album.external_urls.spotify,
+          totalTracks: spotify.album.total_tracks,
+          addedAt: spotify.added_at,
         });
       }
     });

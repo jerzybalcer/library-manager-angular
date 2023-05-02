@@ -1,9 +1,9 @@
 .albumList {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
-  max-width: 65vw;
+  width: 55vw;
   overflow-y: scroll;
   height: 90vh;
 }

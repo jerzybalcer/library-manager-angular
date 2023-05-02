@@ -1,4 +1,14 @@
 <div class="panel">
-    <h1>{{album.title}}</h1>
-    <h2>{{album.artist}}</h2>
+    <img src={{album.imageUrl}}/>
+
+    <div class="info">
+        <h1 class="title">{{album.title}}</h1>
+        <div class="additionalInfo">
+            <h2>{{album.artist}}</h2>
+            <div class="dot"></div>
+            <h2>2023</h2>
+            <div class="dot"></div>
+            <h2>{{album.totalTracks}} {{album.totalTracks < 2 ? 'track' : 'tracks'}}</h2>
+        </div>
+    </div>
 </div>

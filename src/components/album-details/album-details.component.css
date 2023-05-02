@@ -1,10 +1,40 @@
 .panel {
   background-color: #181818;
   color: white;
-  width: 35vw;
+  width: 45vw;
   height: 100vh;
   border-radius: 8px;
   display: flex;
+  flex-direction: row;
+  align-items: start;
+  padding: 16px;
+}
+
+img {
+  width: 40%;
+  margin-right: 24px;
+}
+
+.info {
+  display: flex;
   flex-direction: column;
+}
+
+.title {
+  font-size: 2vw;
+}
+
+.additionalInfo {
+  font-size: 0.5vw;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+}
+
+.dot {
+  background-color: white;
+  border-radius: 50%;
+  width: 0.2vw;
+  height: 0.2vw;
+  margin: 0 8px;
 }
