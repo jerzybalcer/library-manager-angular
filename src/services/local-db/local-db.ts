@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Album } from 'src/interfaces/album.interface';
+import { getDurationFromMs } from 'src/utils/time-utils';
 
 @Injectable()
 export class LocalDB {
@@ -23,6 +24,14 @@ export class LocalDB {
           spotifyUrl: spotify.album.external_urls.spotify,
           totalTracks: spotify.album.total_tracks,
           addedAt: spotify.added_at,
+          releasedAt: spotify.album.release_date,
+          tracks: spotify.album.tracks.items.map((t: any) => {
+            return {
+              title: t.name,
+              artists: t.artists.map((a: any) => a.name),
+              duration: getDurationFromMs(t.duration_ms),
+            };
+          }),
         });
       }
     });

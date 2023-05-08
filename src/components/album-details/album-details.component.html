@@ -1,14 +1,34 @@
-<div class="panel">
-    <img src={{album.imageUrl}}/>
+<div *ngIf="album.title" class="mainPanel">
+    <div class="headerPanel">
+        <img src={{album.imageUrl}}/>
 
-    <div class="info">
-        <h1 class="title">{{album.title}}</h1>
-        <div class="additionalInfo">
-            <h2>{{album.artist}}</h2>
-            <div class="dot"></div>
-            <h2>2023</h2>
-            <div class="dot"></div>
-            <h2>{{album.totalTracks}} {{album.totalTracks < 2 ? 'track' : 'tracks'}}</h2>
+        <div class="info">
+            <h1 class="title">{{album.title}}</h1>
+            <div class="additionalInfo">
+                <h2>{{album.artist}}</h2>
+                <div class="dot"></div>
+                <h2>{{album.releasedAt.slice(0, 4)}}</h2>
+                <div class="dot"></div>
+                <h2>{{album.totalTracks}} {{album.totalTracks < 2 ? 'track' : 'tracks'}}</h2>
+            </div>
         </div>
+    </div>
+    <div class="tracksPanel">
+        <table class="tracksTable" >
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+            </tr>
+            <tr class="tableSpacer"></tr>
+            <tr *ngFor="let track of album.tracks; index as i;">
+                <td class="trackNumberText">{{i}}</td>
+                <td>
+                    <div>
+                        <div>{{track.title}}</div>
+                        <div class="trackArtists">{{track.artists.join(', ')}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
