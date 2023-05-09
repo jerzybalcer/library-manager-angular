@@ -1,11 +1,12 @@
 button {
   background-color: #1ed760;
   color: black;
-  border-radius: 24px;
-  padding: 8px 32px;
-  font-size: large;
-  font-weight: 500;
+  border-radius: 500px;
+  padding: 14px 32px;
+  font-size: 95%;
+  font-weight: 700;
   border: none;
+  line-height: 20px;
 }
 
 button:hover {
