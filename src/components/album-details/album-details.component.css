@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 45vw;
-  height: 100vh;
+  height: 95vh;
   background-color: #181818;
   color: white;
   overflow-y: auto;
@@ -19,7 +19,7 @@
 .tracksPanel {
   padding: 0px 24px;
   font-size: 1vw;
-  margin-bottom: 10vh;
+  margin-bottom: 20pt;
   font-weight: 300;
 }
 
