@@ -13,6 +13,11 @@
             </div>
         </div>
     </div>
+    <div class="buttonsPanel">
+        <app-button-with-icon variant="listen" (clickEvent)="onListenButtonClick()"></app-button-with-icon>
+        <app-button-with-icon variant="link" (clickEvent)="onCopyLinkButtonClick()"></app-button-with-icon>
+        <app-button-with-icon variant="remove"></app-button-with-icon>
+    </div>
     <div class="tracksPanel">
         <table class="tracksTable" >
             <tr>

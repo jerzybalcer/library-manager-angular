@@ -1,0 +1,27 @@
+div {
+  border-radius: 50%;
+  color: #000;
+  background-color: #2a2a2a;
+  transition: filter 0.3s ease;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: solid 1px transparent;
+}
+
+div:hover {
+  filter: brightness(130%);
+  transition: filter 0.3s ease;
+}
+
+img {
+  filter: invert(100%);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+img:hover {
+  fill: var(--amethyst);
+}

@@ -1,5 +1,5 @@
 html {
-  background-color: #121212;
+  background-color: var(--night);
   font-family: Circular, Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
@@ -11,15 +11,24 @@ body {
   position: fixed;
 }
 
+/* https://coolors.co/a06cd5-0f0f0f-2d2e2e-fbfbfb-6f58c9 */
+:root {
+  --amethyst: #a06cd5ff;
+  --night: #0f0f0fff;
+  --jet: #2d2e2eff;
+  --white: #fbfbfbff;
+  --slate-blue: #6f58c9ff;
+}
+
 @font-face {
   font-family: "Circular";
-  src: url("../assets/fonts/CircularBook.otf");
+  src: url("./assets/fonts/CircularBook.otf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Circular";
-  src: url("../assets/fonts/CircularLight.otf");
+  src: url("./assets/fonts/CircularLight.otf");
   font-weight: 300;
 }
 

@@ -3,12 +3,14 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  width: 55vw;
+  width: 54vw;
   overflow-y: scroll;
   height: 95vh;
+  margin-top: 8px;
+  margin-right: 1vw;
 }
 
 .albumListItem {
   width: calc(33.33% - 16px);
-  margin: 8px;
+  margin: 0 8px 16px 8px;
 }

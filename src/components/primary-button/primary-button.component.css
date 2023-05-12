@@ -1,5 +1,6 @@
 button {
-  background-color: #1ed760;
+  background-color: var(--slate-blue);
+  transition: filter 0.3s ease;
   color: black;
   border-radius: 500px;
   padding: 14px 32px;
@@ -7,8 +8,10 @@ button {
   font-weight: 700;
   border: none;
   line-height: 20px;
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #1fdf65;
+  filter: brightness(130%);
+  transition: filter 0.3s ease;
 }

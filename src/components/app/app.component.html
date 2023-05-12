@@ -1,7 +1,7 @@
 <div class="root">
     <div *ngIf="!isAuthenticated" class="login">
         <h1>Spotify Library Manager</h1>
-        <app-button content='LOG IN WITH SPOTIFY' [onClick]="onLogin" />
+        <app-primary-button content='LOG IN WITH SPOTIFY' [onClick]="onLogin" />
     </div>
 
     <div *ngIf="isAuthenticated">
