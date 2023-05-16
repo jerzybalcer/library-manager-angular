@@ -5,11 +5,13 @@ import { SpotifyApi } from 'src/services/spotify/spotify-api';
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.css'],
-  providers: [SpotifyApi]
+  providers: [SpotifyApi],
 })
 export class UserInfoComponent {
   username: string = '';
   imageUrl: string = '';
+  profileUrl: string = '';
+  isDropdownOpened: boolean = false;
 
   constructor(private spotifyApi: SpotifyApi) {}
 
@@ -17,5 +19,10 @@ export class UserInfoComponent {
     const userProfile = await this.spotifyApi.getUser();
     this.username = userProfile.display_name;
     this.imageUrl = userProfile.images[0].url;
+    this.profileUrl = userProfile.external_urls.spotify;
+  }
+
+  onClick() {
+    this.isDropdownOpened = !this.isDropdownOpened;
   }
 }

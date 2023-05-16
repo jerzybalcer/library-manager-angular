@@ -1,9 +1,13 @@
 .toolbarInput {
-  background-color: #2a2a2a;
+  background-color: var(--night);
   border: none;
   padding: 8px;
   margin: 0px 8px;
   width: 33.33%;
   border-radius: 24px;
   color: white;
+}
+
+.toolbarInput:focus {
+  outline: 2px solid var(--amethyst);
 }

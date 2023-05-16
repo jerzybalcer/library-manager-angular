@@ -1,4 +1,15 @@
-<div class="userInfoRoot">
+<div class="userInfoRoot" (click)="onClick()">
     <img class="userAvatarCircle" src="{{imageUrl}}">
     <p>{{username}}</p>
+
+    <div *ngIf="isDropdownOpened" class="dropdown">
+        <app-primary-button content="Logout" />
+
+        <a href="{{profileUrl}}" target="_blank">
+            <app-primary-button content="Profile" />
+        </a>
+        <a href="https://www.spotify.com/us/account/overview/" target="_blank">
+            <app-primary-button content="Account" />
+        </a>
+    </div>
 </div>
