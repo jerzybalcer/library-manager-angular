@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpotifyApi } from 'src/services/spotify/spotify-api';
+import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 
 @Component({
   selector: 'app-user-info',

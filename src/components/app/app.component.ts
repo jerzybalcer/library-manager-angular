@@ -1,12 +1,12 @@
 import { Album } from 'src/interfaces/album.interface';
-import { SpotifyAuth } from '../../services/spotify/spotify-auth';
-import { Component, Input } from '@angular/core';
+import { SpotifyAuth } from '../../services/spotify/spotify-auth.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SpotifyAuth]
+  providers: [SpotifyAuth],
 })
 export class AppComponent {
   isAuthenticated: boolean = true;
@@ -14,11 +14,11 @@ export class AppComponent {
 
   constructor(private spotifyAuth: SpotifyAuth) {}
 
-  async ngOnInit(){
+  async ngOnInit() {
     const urlParams = new URLSearchParams(window.location.search);
     const authorizationCode = urlParams.get('code');
 
-    if(authorizationCode){
+    if (authorizationCode) {
       await this.spotifyAuth.authenticate(authorizationCode);
       window.location.href = '';
     }

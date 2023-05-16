@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Album } from '../../interfaces/album.interface';
-import { LocalDB } from 'src/services/local-db/local-db';
-import { SpotifyApi } from 'src/services/spotify/spotify-api';
+import { LocalDB } from 'src/services/local-db/local-db.service';
+import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 
 @Component({
   selector: 'app-albums-list',
