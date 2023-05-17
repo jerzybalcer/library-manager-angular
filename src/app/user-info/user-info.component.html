@@ -3,7 +3,7 @@
     <p>{{username}}</p>
 
     <div *ngIf="isDropdownOpened" class="dropdown">
-        <app-primary-button content="Logout" />
+        <app-primary-button content="Logout" [onClick]="logout"/>
 
         <a href="{{profileUrl}}" target="_blank">
             <app-primary-button content="Profile" />

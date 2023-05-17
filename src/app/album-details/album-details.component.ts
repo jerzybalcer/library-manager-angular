@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Album } from 'src/interfaces/album.interface';
+import { Album } from 'src/models/album.interface';
 
 @Component({
   selector: 'app-album-details',

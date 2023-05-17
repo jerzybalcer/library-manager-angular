@@ -1,50 +1,48 @@
-import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class SpotifyApi {
-  
-  getUser = async () => {
+  constructor(private httpClient: HttpClient) {}
+
+  getUser = () => {
     const accessToken = localStorage.getItem('access_token');
 
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + accessToken,
-        },
-      }
-    );
-
-    return await response.json();
-  }
+    return this.httpClient.get<any>('https://api.spotify.com/v1/me/', {
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+      withCredentials: false,
+    });
+  };
 
   getAllAlbums = async () => {
     let albums: any[] = [];
-    
-    let currentFragment = await this.getAlbums(50, 0);
-    
+
+    let currentFragment = await firstValueFrom(this.getAlbums(50, 0));
+
     albums = albums.concat(currentFragment.items);
-    
+
     while (currentFragment.next) {
-      currentFragment = await this.getAlbums(50, albums.length);
+      currentFragment = await firstValueFrom(this.getAlbums(50, albums.length));
       albums = albums.concat(currentFragment.items);
     }
-    
+
     return albums;
   };
 
-  private getAlbums = async (limit: number, offset: number) => {
+  private getAlbums = (limit: number, offset: number) => {
     const accessToken = localStorage.getItem('access_token');
-  
-    const response = await fetch(
+
+    return this.httpClient.get<any>(
       `https://api.spotify.com/v1/me/albums?limit=${limit}&offset=${offset}`,
       {
         headers: {
           Authorization: 'Bearer ' + accessToken,
         },
+        withCredentials: false,
       }
     );
-  
-    return await response.json();
   };
 }

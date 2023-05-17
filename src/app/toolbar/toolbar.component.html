@@ -1,0 +1,11 @@
+<select class="toolbarInput" (change)="onSort($event)">
+    <option value="title">Title</option>
+    <option value="artist">Artist</option>
+    <option value="releasedAt">Released Date</option>
+    <option value="addedAt" selected>Saved Date</option>
+</select>
+<select class="toolbarInput">
+    <option>Tag1</option>
+    <option>Tag2</option>
+</select>
+<input class="toolbarInput" type="text" placeholder="Search" (input)="onSearch($event)"/>

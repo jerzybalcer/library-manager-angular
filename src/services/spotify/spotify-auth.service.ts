@@ -1,22 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SpotifyAuth {
-  isAuthenticated = async (): Promise<boolean> => {
-    const accessToken = localStorage.getItem('access_token');
-
-    if (!accessToken) return false;
-
-    const response = await fetch(`https://api.spotify.com/v1/me/`, {
-      headers: {
-        Authorization: 'Bearer ' + accessToken,
-      },
-    });
-
-    if (response.ok) return true;
-    else return false;
-  };
+  constructor(private httpClient: HttpClient) {}
 
   authorize = () => {
     const codeVerifier = this.generateRandomString(128);
@@ -41,8 +30,10 @@ export class SpotifyAuth {
     });
   };
 
-  authenticate = async (authorizationCode: string) => {
+  authenticate = (authorizationCode: string) => {
     const codeVerifier = localStorage.getItem('code_verifier');
+
+    console.log(authorizationCode);
 
     const body = new URLSearchParams({
       grant_type: 'authorization_code',
@@ -52,26 +43,33 @@ export class SpotifyAuth {
       code_verifier: codeVerifier ?? '',
     });
 
-    await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: body,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('HTTP status ' + response.status);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    return this.httpClient.post<any>(
+      'https://accounts.spotify.com/api/token',
+      body,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+  };
+
+  refresh = (refreshToken: string): Observable<any> => {
+    const body = new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+      client_id: environment.SpotifyClientId,
+    });
+
+    return this.httpClient.post<any>(
+      'https://accounts.spotify.com/api/token',
+      body,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
   };
 
   private generateRandomString = (length: number) => {

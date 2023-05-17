@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Album } from 'src/interfaces/album.interface';
+import { Album } from 'src/models/album.interface';
 import { getDurationFromMs } from 'src/utils/time-utils';
 
 @Injectable()
