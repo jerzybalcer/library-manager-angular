@@ -49,6 +49,11 @@ export class AlbumsListComponent {
     this.queryAlbums();
   }
 
+  onChangeSortDirection() {
+    this.isSortAscending = !this.isSortAscending;
+    this.queryAlbums();
+  }
+
   private queryAlbums() {
     const albumsAfterSearch = this.searchAlbums(this.albums);
     const albumsAfterSort = this.sortAlbums(albumsAfterSearch);

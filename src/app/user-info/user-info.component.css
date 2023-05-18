@@ -7,7 +7,6 @@
 
 .userInfoRoot {
   font-size: 100%;
-  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +31,6 @@
   background-color: var(--jet);
   padding: 4px;
   border-radius: 16px;
-  color: white;
   position: absolute;
   margin-top: 2px;
   width: 95%;
