@@ -62,7 +62,7 @@
 
 .trackArtists {
   font-size: 0.75vw;
-  color: #939393;
+  color: var(--icon-grey);
   text-overflow: ellipsis;
   overflow: hidden;
   width: 95%;

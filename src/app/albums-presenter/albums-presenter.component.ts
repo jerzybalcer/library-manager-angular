@@ -3,19 +3,21 @@ import { Album } from '../../models/album.interface';
 import { LocalDB } from 'src/services/local-db/local-db.service';
 import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 import { SortBy } from 'src/models/sort-by.type';
+import { AlbumsViewType } from 'src/models/albums-view.type';
 
 @Component({
-  selector: 'app-albums-list',
-  templateUrl: './albums-list.component.html',
-  styleUrls: ['./albums-list.component.css'],
+  selector: 'app-albums-presenter',
+  templateUrl: './albums-presenter.component.html',
+  styleUrls: ['./albums-presenter.component.css'],
   providers: [SpotifyApi, LocalDB],
 })
-export class AlbumsListComponent {
+export class AlbumsPresenterComponent {
   private albums: Album[] = [];
   private searchPhrase: string = '';
   private sortBy: SortBy = 'addedAt';
   private isSortAscending: boolean = false;
 
+  displayAs: AlbumsViewType = 'grid';
   visibleAlbums: Album[] = [];
 
   @Output() chooseAlbumEvent: EventEmitter<Album> = new EventEmitter<Album>();
@@ -52,6 +54,10 @@ export class AlbumsListComponent {
   onChangeSortDirection() {
     this.isSortAscending = !this.isSortAscending;
     this.queryAlbums();
+  }
+
+  onSwitchView(viewType: AlbumsViewType) {
+    this.displayAs = viewType;
   }
 
   private queryAlbums() {

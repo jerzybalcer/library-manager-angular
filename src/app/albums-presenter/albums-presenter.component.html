@@ -1,0 +1,9 @@
+<div *ngIf="displayAs === 'grid'" class="albumGrid">
+    <app-album-cover *ngFor='let album of visibleAlbums;' class="albumGridItem" 
+        [album]="album" (chooseAlbumEvent)="onChooseAlbum($event)" />
+</div>
+
+<div *ngIf="displayAs === 'list'" class="albumList">
+    <app-album-list-item *ngFor='let album of visibleAlbums;' class="albumListItem" 
+        [album]="album" (chooseAlbumEvent)="onChooseAlbum($event)" />
+</div>

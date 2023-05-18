@@ -1,0 +1,13 @@
+<div class="container" (click)="onClick()">
+    <img [src]="album.imageUrl" />
+    <div class="albumListItemMainText">
+        <span class="titleText">{{album.title}}</span>
+        <span class="artistText">{{album.artist}}</span>
+    </div>
+    <span class="albumListItemDateText">
+        {{album.addedAt | date}}
+    </span>
+    <span class="albumListItemDateText">
+        {{album.releasedAt | date}}
+    </span>
+</div>

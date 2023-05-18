@@ -1,0 +1,25 @@
+.container {
+  border-radius: 24px;
+  background-color: var(--night);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imageWrapper {
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  transition: background-color ease 0.3s;
+  cursor: pointer;
+}
+
+/* .selected {
+  background-color: var(--amethyst);
+  transition: background-color ease 0.3s;
+} */
+
+img {
+  filter: invert(100%);
+}

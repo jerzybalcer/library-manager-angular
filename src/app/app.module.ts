@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AlbumsListComponent } from './albums-list/albums-list.component';
+import { AlbumsPresenterComponent } from './albums-presenter/albums-presenter.component';
 import { AlbumCoverComponent } from './album-cover/album-cover.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { PrimaryButtonComponent } from './primary-button/primary-button.component';
@@ -14,17 +14,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpotifyAuth } from 'src/services/spotify/spotify-auth.service';
 import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 import { LocalDB } from 'src/services/local-db/local-db.service';
+import { AlbumListItemComponent } from './album-list-item/album-list-item.component';
+import { AlbumsViewSwitchComponent } from './albums-view-switch/albums-view-switch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlbumsListComponent,
+    AlbumsPresenterComponent,
     AlbumCoverComponent,
     AlbumDetailsComponent,
     PrimaryButtonComponent,
     UserInfoComponent,
     ToolbarComponent,
     ButtonWithIconComponent,
+    AlbumListItemComponent,
+    AlbumsViewSwitchComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [httpInterceptorProviders, SpotifyAuth, SpotifyApi, LocalDB],

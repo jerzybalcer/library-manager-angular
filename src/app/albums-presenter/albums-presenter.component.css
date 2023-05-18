@@ -1,4 +1,4 @@
-.albumList {
+.albumGrid {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -10,7 +10,12 @@
   margin-right: 1vw;
 }
 
-.albumListItem {
-  width: calc(33.33% - 16px);
-  margin: 0 8px 16px 8px;
+.albumList {
+  display: flex;
+  flex-direction: column;
+  width: 54vw;
+  overflow-y: scroll;
+  height: 95vh;
+  margin-top: 8px;
+  margin-right: 1vw;
 }

@@ -1,0 +1,47 @@
+.container {
+  border-radius: 8px;
+  background-color: #181818;
+  transition: background-color 0.3s ease;
+  padding: 0px 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 0px 8px 16px 8px;
+  height: 6vh;
+}
+
+.container:hover {
+  background-color: #282828;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.albumListItemMainText {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.titleText {
+  font-size: 1vw;
+}
+
+.artistText {
+  font-size: 0.6vw;
+  color: var(--icon-grey);
+}
+
+.albumListItemDateText {
+  margin-right: 16px;
+  width: 10%;
+}
+
+img {
+  height: 90%;
+  box-shadow: 8px 8px 16px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  object-fit: contain;
+  overflow: hidden;
+  margin-right: 16px;
+}

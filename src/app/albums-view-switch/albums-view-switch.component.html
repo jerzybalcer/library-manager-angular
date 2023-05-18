@@ -1,0 +1,8 @@
+<div class="container" (click)="onClick()">
+    <div [style.backgroundColor]="selected === 'grid' ? 'var(--amethyst)' : 'var(--jet)'" class="imageWrapper">
+        <img src="assets/icons/grid.svg" />
+    </div>
+    <div [style.backgroundColor]="selected === 'list' ? 'var(--amethyst)' : 'var(--jet)'" class="imageWrapper">
+        <img src="assets/icons/list.svg" />
+    </div>
+</div>
