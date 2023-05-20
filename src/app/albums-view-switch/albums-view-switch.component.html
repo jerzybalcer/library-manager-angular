@@ -1,8 +1,10 @@
-<div class="container" (click)="onClick()">
-    <div [style.backgroundColor]="selected === 'grid' ? 'var(--amethyst)' : 'var(--jet)'" class="imageWrapper">
+<div class="container">
+    <input type="checkbox" (change)="onClick()"/>
+    <div class="thumb"></div>
+    <div class="imageWrapper">
         <img src="assets/icons/grid.svg" />
     </div>
-    <div [style.backgroundColor]="selected === 'list' ? 'var(--amethyst)' : 'var(--jet)'" class="imageWrapper">
+    <div class="imageWrapper">
         <img src="assets/icons/list.svg" />
     </div>
 </div>
