@@ -1,0 +1,13 @@
+<div class="container">
+    <input type="checkbox" 
+        (change)="onClick()"
+        [checked]="default==='right'"
+    />
+    <div class="thumb"></div>
+    <div class="imageWrapper">
+        <img src={{leftIconSrc}} />
+    </div>
+    <div class="imageWrapper">
+        <img src={{rightIconSrc}} />
+    </div>
+</div>

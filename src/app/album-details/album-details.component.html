@@ -14,12 +14,18 @@
         </div>
     </div>
     <div class="buttonsPanel">
+        <app-switch leftIconSrc="assets/icons/tracks.svg"
+            rightIconSrc="assets/icons/tags.svg"
+            (toggleEvent)="onSwitchExpandedDetails()"
+        />
+        <div class="horizontalLine"></div>
         <app-button-with-icon variant="listen" (clickEvent)="onListenButtonClick()"></app-button-with-icon>
         <app-button-with-icon variant="link" (clickEvent)="onCopyLinkButtonClick()"></app-button-with-icon>
         <app-button-with-icon variant="remove"></app-button-with-icon>
     </div>
-    <div class="tracksPanel">
-        <table class="tracksTable" >
+    <div class="expandedDetailsPanel">
+        <h3>{{expandedInfo === 'tracks' ? 'Tracks' : 'Tags'}}</h3>
+        <table *ngIf="expandedInfo==='tracks'" class="tracksTable">
             <tr>
                 <th>#</th>
                 <th>Title</th>
@@ -35,5 +41,6 @@
                 </td>
             </tr>
         </table>
+        <div *ngIf="expandedInfo === 'tags'" class="tagsList">Tags</div>
     </div>
 </div>

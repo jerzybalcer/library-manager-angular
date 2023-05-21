@@ -20,6 +20,7 @@ img {
   filter: invert(100%);
   user-select: none;
   -webkit-user-select: none;
+  width: 1.5vw;
 }
 
 img:hover {

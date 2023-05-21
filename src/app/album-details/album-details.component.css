@@ -23,7 +23,12 @@
   gap: 16px;
 }
 
-.tracksPanel {
+.horizontalLine {
+  width: 1px;
+  background-color: var(--icon-grey);
+}
+
+.expandedDetailsPanel {
   padding: 0px 24px;
   font-size: 1vw;
   margin-bottom: 20pt;
@@ -35,6 +40,10 @@
   table-layout: fixed;
   line-height: 2.75vh;
   border-collapse: collapse;
+}
+
+h3 {
+  margin: 0 0 8px 0;
 }
 
 .tracksTable th {

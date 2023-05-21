@@ -6,6 +6,11 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  margin: 0 8px;
+}
+
+.container:hover .thumb {
+  filter: brightness(115%);
 }
 
 .imageWrapper {
@@ -13,6 +18,8 @@
   display: flex;
   align-items: center;
   padding: 8px;
+  height: 24px;
+  width: 24px;
 }
 
 .thumb {
@@ -22,8 +29,9 @@
   border-radius: 24px;
   padding: 8px;
   position: absolute;
-  left: 50%;
+  left: 0%;
   transition: 0.3s;
+  box-shadow: 0px 0px 16px 4px var(--night);
 }
 
 [type=checkbox] {
@@ -38,7 +46,7 @@
 }
 
 [type=checkbox]:checked~.thumb {
-  left: 0%;
+  left: 50%;
   transition: 0.3s;
 }
 

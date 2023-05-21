@@ -33,3 +33,7 @@ img {
 .sortDirectionIcon {
   cursor: pointer;
 }
+
+.filterSelect {
+  pointer-events: none;
+}

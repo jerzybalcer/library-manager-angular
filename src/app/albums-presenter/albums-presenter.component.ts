@@ -56,8 +56,8 @@ export class AlbumsPresenterComponent {
     this.queryAlbums();
   }
 
-  onSwitchView(viewType: AlbumsViewType) {
-    this.displayAs = viewType;
+  onSwitchView() {
+    this.displayAs = this.displayAs === 'grid' ? 'list' : 'grid';
   }
 
   private queryAlbums() {

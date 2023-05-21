@@ -15,7 +15,7 @@ import { SpotifyAuth } from 'src/services/spotify/spotify-auth.service';
 import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 import { LocalDB } from 'src/services/local-db/local-db.service';
 import { AlbumListItemComponent } from './album-list-item/album-list-item.component';
-import { AlbumsViewSwitchComponent } from './albums-view-switch/albums-view-switch.component';
+import { AlbumsViewSwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [

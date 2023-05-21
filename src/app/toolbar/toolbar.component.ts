@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AlbumsViewType } from 'src/models/albums-view.type';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,8 +12,8 @@ export class ToolbarComponent {
   @Output() sortEvent: EventEmitter<string> = new EventEmitter<string>();
   @Output() changeSortDirectionEvent: EventEmitter<void> =
     new EventEmitter<void>();
-  @Output() switchViewEvent: EventEmitter<AlbumsViewType> =
-    new EventEmitter<AlbumsViewType>();
+  @Output() switchViewEvent: EventEmitter<void> =
+    new EventEmitter<void>();
 
   onSearch(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -31,7 +30,7 @@ export class ToolbarComponent {
     this.changeSortDirectionEvent.emit();
   }
 
-  onSwitchView(viewType: AlbumsViewType) {
-    this.switchViewEvent.emit(viewType);
+  onSwitchView() {
+    this.switchViewEvent.emit();
   }
 }
