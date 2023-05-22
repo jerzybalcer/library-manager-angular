@@ -1,16 +1,31 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 60vw;
+}
+
 .toolbarInputWrapper {
-  background-color: var(--night);
+  background-color: var(--dark);
   border: none;
   padding: 8px;
-  margin: 0px 8px;
+  margin-right: 16px;
   width: calc(100% / 3);
   border-radius: 24px;
   display: flex;
   flex-direction: row;
 }
 
+.toolbarChild {
+  width: calc(100% / 3);
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 16px;
+}
+
 .toolbarInput {
-  background-color: var(--night);
+  background-color: var(--dark);
   color: var(--white);
   border: none;
   width: 90%;
@@ -34,6 +49,8 @@ img {
   cursor: pointer;
 }
 
-.filterSelect {
-  pointer-events: none;
+input[type=text] {
+  font-size: 16px;
+  font-weight: 500;
+  background-color: transparent;
 }

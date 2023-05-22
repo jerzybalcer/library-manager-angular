@@ -1,0 +1,13 @@
+<div class="container" (click)="onClick()">
+    <img [src]="iconSrc" />
+    <div class="header">{{header}}</div>
+    <div *ngIf="isDropdownOpen" class="dropdown">
+        <div *ngFor="let option of options" 
+            class="option" 
+            (click)="onSelect(option)"
+            [ngStyle]="{'color': selected.includes(option) ? 'var(--amethyst)' : 'var(--white)'}"
+            >
+            {{option}}
+        </div>
+    </div>
+</div>

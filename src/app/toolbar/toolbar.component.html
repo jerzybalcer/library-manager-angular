@@ -1,33 +1,41 @@
-<div class="toolbarInputWrapper">
-    <img src="assets/icons/search.svg" />
-    <input class="toolbarInput" 
-        type="text" 
-        placeholder="Search" 
-        (input)="onSearch($event)"/>
-</div>
+<div class="container">
+    <div class="toolbarInputWrapper">
+        <img src="assets/icons/search.svg" />
+        <input class="toolbarInput" 
+            type="text" 
+            placeholder="Search" 
+            (input)="onSearch($event)"/>
+    </div>
+    
+    <div class="toolbarChild">
+        <app-select [multiple]="false"
+            iconSrc="assets/icons/sort-asc.svg"
+            [options]="['Title', 'Artist', 'Added Date', 'Released Date']"
+            default="Added Date"
+        />
+    </div>
+    <div class="toolbarChild">
+        <app-select [multiple]="true"
+            iconSrc="assets/icons/filter.svg"
+        />
+    </div>
 
-<div class="toolbarInputWrapper">
-    <img class="sortDirectionIcon" 
-        src="assets/icons/{{sortIcon}}.svg" 
-        (click)="onChangeSortDirection()" 
+    <!-- <div class="toolbarInputWrapper">
+        <img class="sortDirectionIcon" 
+            src="assets/icons/{{sortIcon}}.svg" 
+            (click)="onChangeSortDirection()" 
+        />
+        <select class="toolbarInput" (change)="onSort($event)">
+            <option value="title">Title</option>
+            <option value="artist">Artist</option>
+            <option value="releasedAt">Released Date</option>
+            <option value="addedAt" selected>Saved Date</option>
+        </select>
+    </div> -->
+
+    <app-switch class="switch"
+        leftIconSrc="assets/icons/grid.svg" 
+        rightIconSrc="assets/icons/list.svg" 
+        (toggleEvent)="onSwitchView()" 
     />
-    <select class="toolbarInput" (change)="onSort($event)">
-        <option value="title">Title</option>
-        <option value="artist">Artist</option>
-        <option value="releasedAt">Released Date</option>
-        <option value="addedAt" selected>Saved Date</option>
-    </select>
 </div>
-
-<div class="toolbarInputWrapper">
-    <img src="assets/icons/filter.svg" />
-    <select class="toolbarInput filterSelect">
-        <option>Filter by Tags</option>
-    </select>
-</div>
-
-<app-switch leftIconSrc="assets/icons/grid.svg" 
-    rightIconSrc="assets/icons/list.svg" 
-    (toggleEvent)="onSwitchView()" 
-/>
-

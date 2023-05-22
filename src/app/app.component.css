@@ -13,12 +13,6 @@
   background-color: var(--jet);
 }
 
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .content {
   display: flex;
   flex-direction: row;

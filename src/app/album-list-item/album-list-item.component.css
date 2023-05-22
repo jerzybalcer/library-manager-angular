@@ -1,6 +1,6 @@
 .container {
   border-radius: 8px;
-  background-color: #181818;
+  background-color: var(--dark);
   transition: background-color 0.3s ease;
   padding: 0px 8px;
   display: flex;
@@ -29,7 +29,7 @@
 
 .artistText {
   font-size: 0.6vw;
-  color: var(--icon-grey);
+  color: var(--grey);
 }
 
 .albumListItemDateText {

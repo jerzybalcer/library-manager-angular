@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 45vw;
   height: 95vh;
-  background-color: #181818;
+  background-color: var(--dark);
   overflow-y: scroll;
   margin-top: 8px;
 }
@@ -25,7 +25,7 @@
 
 .horizontalLine {
   width: 1px;
-  background-color: var(--icon-grey);
+  background-color: var(--grey);
 }
 
 .expandedDetailsPanel {
@@ -71,7 +71,7 @@ h3 {
 
 .trackArtists {
   font-size: 0.75vw;
-  color: var(--icon-grey);
+  color: var(--grey);
   text-overflow: ellipsis;
   overflow: hidden;
   width: 95%;

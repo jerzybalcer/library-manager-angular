@@ -16,6 +16,7 @@ import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
 import { LocalDB } from 'src/services/local-db/local-db.service';
 import { AlbumListItemComponent } from './album-list-item/album-list-item.component';
 import { AlbumsViewSwitchComponent } from './switch/switch.component';
+import { SelectComponent } from './select/select.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AlbumsViewSwitchComponent } from './switch/switch.component';
     ButtonWithIconComponent,
     AlbumListItemComponent,
     AlbumsViewSwitchComponent,
+    SelectComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [httpInterceptorProviders, SpotifyAuth, SpotifyApi, LocalDB],

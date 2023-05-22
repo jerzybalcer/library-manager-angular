@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #181818;
+  background-color: var(--black);
   transition: background-color 0.3s ease;
   border-radius: 24px;
   padding-right: 8px;
@@ -23,14 +23,14 @@
 }
 
 .userInfoRoot:hover {
-  background-color: #282828;
+  filter: brightness(110%);
   transition: background-color 0.3s ease;
 }
 
 .dropdown {
   background-color: var(--jet);
   padding: 4px;
-  border-radius: 16px;
+  border-radius: 8px;
   position: absolute;
   margin-top: 2px;
   width: 95%;

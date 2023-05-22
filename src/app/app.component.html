@@ -6,7 +6,7 @@
 
     <div *ngIf="isAuthenticated">
         <div class="navbar">
-            <app-toolbar class="toolbar" 
+            <app-toolbar
                 (searchEvent)="presenter.onSearch($event)" 
                 (sortEvent)="presenter.onSort($event)" 
                 (changeSortDirectionEvent)="presenter.onChangeSortDirection()"
