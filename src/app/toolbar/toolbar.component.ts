@@ -12,17 +12,15 @@ export class ToolbarComponent {
   @Output() sortEvent: EventEmitter<string> = new EventEmitter<string>();
   @Output() changeSortDirectionEvent: EventEmitter<void> =
     new EventEmitter<void>();
-  @Output() switchViewEvent: EventEmitter<void> =
-    new EventEmitter<void>();
+  @Output() switchViewEvent: EventEmitter<void> = new EventEmitter<void>();
 
   onSearch(event: Event) {
     const target = event.target as HTMLInputElement;
     this.searchEvent.emit(target.value);
   }
 
-  onSort(event: Event) {
-    const target = event.target as HTMLInputElement;
-    this.sortEvent.emit(target.value);
+  onSort(sortBy: string) {
+    this.sortEvent.emit(sortBy);
   }
 
   onChangeSortDirection() {

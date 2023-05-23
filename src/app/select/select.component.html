@@ -1,13 +1,15 @@
 <div class="container" (click)="onClick()">
-    <img [src]="iconSrc" />
+    <img [src]="currentIconSrc" 
+        [ngStyle]="{'cursor' : clickableIcon ? 'pointer' : 'auto'}"
+        (click)="onIconClick($event)"/>
     <div class="header">{{header}}</div>
     <div *ngIf="isDropdownOpen" class="dropdown">
         <div *ngFor="let option of options" 
-            class="option" 
+            class="option"
             (click)="onSelect(option)"
-            [ngStyle]="{'color': selected.includes(option) ? 'var(--amethyst)' : 'var(--white)'}"
+            [ngStyle]="{'color': isSelected(option) ? 'var(--amethyst)' : 'var(--white)'}"
             >
-            {{option}}
+            {{option.label}}
         </div>
     </div>
 </div>
