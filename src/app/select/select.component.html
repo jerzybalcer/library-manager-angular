@@ -1,8 +1,18 @@
-<div class="container" (click)="onClick()">
+<div class="container" 
+    (click)="onClick()"
+    [ngStyle]="{'outline': isDropdownOpen ? '2px solid var(--amethyst)' : ''}"
+>
     <img [src]="currentIconSrc" 
+        class="mainIcon"
         [ngStyle]="{'cursor' : clickableIcon ? 'pointer' : 'auto'}"
         (click)="onIconClick($event)"/>
-    <div class="header">{{header}}</div>
+
+    <div class="header">
+        {{header}}
+    </div>
+
+    <img src="assets/icons/dropdown.svg" class="dropdownIcon" />
+
     <div *ngIf="isDropdownOpen" class="dropdown">
         <div *ngFor="let option of options" 
             class="option"

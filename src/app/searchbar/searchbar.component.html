@@ -1,0 +1,13 @@
+<div class="container" (click)="onClick()">
+    <img [src]="iconSrc" />
+    <input class="input"
+            #textInput
+            type="text" 
+            placeholder="Search" 
+            (input)="onInput($event)"/>
+    <img *ngIf="textInput.value" 
+        class="clearIcon"
+        src="assets/icons/circle-x.svg"
+        (click)="onClear()"
+         />
+</div>

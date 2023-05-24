@@ -14,9 +14,8 @@ export class ToolbarComponent {
     new EventEmitter<void>();
   @Output() switchViewEvent: EventEmitter<void> = new EventEmitter<void>();
 
-  onSearch(event: Event) {
-    const target = event.target as HTMLInputElement;
-    this.searchEvent.emit(target.value);
+  onSearch(phrase: string) {
+    this.searchEvent.emit(phrase);
   }
 
   onSort(sortBy: string) {
