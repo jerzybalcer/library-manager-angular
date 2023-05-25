@@ -1,12 +1,15 @@
 <div class="container">
     <div class="toolbarChild">
         <app-searchbar iconSrc="assets/icons/search.svg"
+            label="Search"
             (inputEvent)="onSearch($event)"
         />
     </div>
 
     <div class="toolbarChild">
-        <app-select [multiple]="false"
+        <app-select 
+            [multiple]="false"
+            label="Sort"
             iconSrc="assets/icons/sort-dsc.svg"
             altIconSrc="assets/icons/sort-asc.svg"
             [options]="[
@@ -22,7 +25,9 @@
         />
     </div>
     <div class="toolbarChild">
-        <app-select [multiple]="true"
+        <app-select 
+            [multiple]="true"
+            label="Filter"
             iconSrc="assets/icons/filter.svg"
             [options]="[
                 {label: 'Option1', value: 'option1'},
@@ -35,6 +40,7 @@
     </div>
 
     <app-switch class="switch"
+        label="View"
         leftIconSrc="assets/icons/grid.svg" 
         rightIconSrc="assets/icons/list.svg" 
         (toggleEvent)="onSwitchView()" 

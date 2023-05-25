@@ -9,9 +9,9 @@ export class AlbumsViewSwitchComponent {
   @Input() default: 'left' | 'right' = 'left';
   @Input() leftIconSrc: string = '';
   @Input() rightIconSrc: string = '';
+  @Input() label: string = '';
 
-  @Output() toggleEvent: EventEmitter<void> =
-    new EventEmitter<void>();
+  @Output() toggleEvent: EventEmitter<void> = new EventEmitter<void>();
 
   onClick() {
     this.toggleEvent.emit();

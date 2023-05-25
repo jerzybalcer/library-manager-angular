@@ -1,9 +1,10 @@
+<div class="label">{{label | uppercase}}</div>
 <div class="container" (click)="onClick()">
     <img [src]="iconSrc" />
     <input class="input"
             #textInput
             type="text" 
-            placeholder="Search" 
+            placeholder="Title / Artist" 
             (input)="onInput($event)"/>
     <img *ngIf="textInput.value" 
         class="clearIcon"

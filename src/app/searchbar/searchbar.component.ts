@@ -16,6 +16,7 @@ export class SearchbarComponent {
   @ViewChild('textInput') textInput!: ElementRef;
 
   @Input() iconSrc: string = '';
+  @Input() label: string = '';
 
   @Output() inputEvent: EventEmitter<string> = new EventEmitter<string>();
 

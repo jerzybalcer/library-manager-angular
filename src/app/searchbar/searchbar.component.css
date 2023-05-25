@@ -17,6 +17,12 @@
   outline: 2px solid var(--amethyst);
 }
 
+.label {
+  margin-left: 8px;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
 .input {
   color: var(--white);
   border: none;

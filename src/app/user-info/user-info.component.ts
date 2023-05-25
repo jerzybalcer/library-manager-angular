@@ -12,7 +12,7 @@ export class UserInfoComponent {
   username: string = '';
   imageUrl: string = '';
   profileUrl: string = '';
-  isDropdownOpened: boolean = false;
+  isDropdownOpen: boolean = false;
 
   constructor(private spotifyApi: SpotifyApi) {}
 
@@ -24,7 +24,7 @@ export class UserInfoComponent {
   }
 
   onClick() {
-    this.isDropdownOpened = !this.isDropdownOpened;
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   logout() {

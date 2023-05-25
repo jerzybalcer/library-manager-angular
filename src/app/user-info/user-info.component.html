@@ -1,15 +1,19 @@
-<div class="userInfoRoot" (click)="onClick()">
+<div 
+    class="userInfoRoot" 
+    (click)="onClick()"
+    [ngStyle]="{'color': isDropdownOpen ? 'var(--amethyst)' : ''}"
+    >
     <img class="userAvatarCircle" src="{{imageUrl}}">
     <p>{{username}}</p>
 
-    <div *ngIf="isDropdownOpened" class="dropdown">
-        <app-primary-button content="Logout" [onClick]="logout"/>
+    <div *ngIf="isDropdownOpen" class="dropdown">
+        <a class="option" href="{{profileUrl}}" target="_blank">
+            <div>Profile</div>
+        </a>
+        <a class="option" href="https://www.spotify.com/us/account/overview/" target="_blank">
+            <div>Account</div>
+        </a>
 
-        <a href="{{profileUrl}}" target="_blank">
-            <app-primary-button content="Profile" />
-        </a>
-        <a href="https://www.spotify.com/us/account/overview/" target="_blank">
-            <app-primary-button content="Account" />
-        </a>
+        <div class="option logoutOption" (click)="logout()">Logout</div>
     </div>
 </div>

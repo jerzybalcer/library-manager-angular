@@ -18,6 +18,7 @@ export class SelectComponent {
   @Input() iconSrc: string = '';
   @Input() altIconSrc: string = '';
   @Input() clickableIcon: boolean = false;
+  @Input() label: string = '';
 
   @Output() selectedEvent: EventEmitter<string | string[]> = new EventEmitter<
     string | string[]
