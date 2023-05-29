@@ -33,8 +33,6 @@ export class SpotifyAuth {
   authenticate = (authorizationCode: string) => {
     const codeVerifier = localStorage.getItem('code_verifier');
 
-    console.log(authorizationCode);
-
     const body = new URLSearchParams({
       grant_type: 'authorization_code',
       code: authorizationCode,

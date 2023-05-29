@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
 import { AppComponent } from './app.component';
 import { AlbumsPresenterComponent } from './albums-presenter/albums-presenter.component';
@@ -18,6 +19,8 @@ import { AlbumListItemComponent } from './album-list-item/album-list-item.compon
 import { AlbumsViewSwitchComponent } from './switch/switch.component';
 import { SelectComponent } from './select/select.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { dbConfig } from 'src/services/local-db/db-config';
+import { AlbumsQueries } from 'src/services/albums/albums-queries';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,18 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     SelectComponent,
     SearchbarComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
-  providers: [httpInterceptorProviders, SpotifyAuth, SpotifyApi, LocalDB],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    NgxIndexedDBModule.forRoot(dbConfig),
+  ],
+  providers: [
+    httpInterceptorProviders,
+    SpotifyAuth,
+    SpotifyApi,
+    LocalDB,
+    AlbumsQueries,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

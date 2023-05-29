@@ -56,8 +56,6 @@ export class AuthInterceptor implements HttpInterceptor {
               `Bearer ${refreshResponse.access_token}`
             );
 
-            console.log('refresh token response: ', refreshResponse);
-
             return next.handle(request);
           }),
           catchError((error) => {

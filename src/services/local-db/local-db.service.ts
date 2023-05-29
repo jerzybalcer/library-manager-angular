@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Album } from 'src/models/album.interface';
+import { Tag } from 'src/models/tag.interface';
 import { getDurationFromMs } from 'src/utils/time-utils';
+import { firstValueFrom, switchMap, map, of, iif, EMPTY } from 'rxjs';
 
 @Injectable()
 export class LocalDB {
-  sync(spotifyAlbums: any[]) {
-    const localAlbums = this.loadAll();
+  constructor(private dbService: NgxIndexedDBService) {}
 
+  async sync(spotifyAlbums: any[]) {
+    const localAlbums = await this.loadAllAlbums();
     const syncedAlbums = localAlbums;
 
     spotifyAlbums.forEach((spotify) => {
@@ -25,6 +29,7 @@ export class LocalDB {
           totalTracks: spotify.album.total_tracks,
           addedAt: spotify.added_at,
           releasedAt: spotify.album.release_date,
+          tags: [],
           tracks: spotify.album.tracks.items.map((t: any) => {
             return {
               title: t.name,
@@ -48,10 +53,73 @@ export class LocalDB {
       }
     });
 
-    localStorage.setItem('albums', JSON.stringify(syncedAlbums));
+    await firstValueFrom(this.dbService.bulkAdd('albums', syncedAlbums));
   }
 
-  loadAll(): Album[] {
-    return JSON.parse(localStorage.getItem('albums') ?? '[]');
+  async loadAllAlbums(): Promise<Album[]> {
+    return await firstValueFrom(this.dbService.getAll<Album>('albums'));
+  }
+
+  async loadAllTags(): Promise<Tag[]> {
+    return await firstValueFrom(this.dbService.getAll<Tag>('tags'));
+  }
+
+  addTag(newTag: Tag, album: Album) {
+    if (!album.id) return of(album);
+
+    if (album.tags.some((t) => t.name === newTag.name)) return of(album);
+
+    const modifiedAlbum = album;
+
+    if (newTag.id) {
+      modifiedAlbum.tags.push(newTag);
+
+      return this.dbService.update<Album>('albums', modifiedAlbum).pipe(
+        map(() => {
+          return modifiedAlbum;
+        })
+      );
+    } else {
+      return this.dbService.add<Tag>('tags', newTag).pipe(
+        switchMap((addedTag) => {
+          modifiedAlbum.tags.push(addedTag);
+
+          return this.dbService.update<Album>('albums', modifiedAlbum).pipe(
+            map(() => {
+              return modifiedAlbum;
+            })
+          );
+        })
+      );
+    }
+  }
+
+  removeTag(toRemove: Tag, album: Album) {
+    if (!album.id || !toRemove.id) return of(album);
+
+    if (!album.tags.some((t) => t.name === toRemove.name)) return of(album);
+
+    const modifiedAlbum = album;
+
+    modifiedAlbum.tags.splice(modifiedAlbum.tags.indexOf(toRemove), 1);
+
+    return this.dbService.update<Album>('albums', modifiedAlbum).pipe(
+      switchMap(() => {
+        return this.dbService.getAll<Album>('albums').pipe(
+          switchMap((albums: Album[]) => {
+            const otherAlbumsWithTag = albums.filter((a) =>
+              a.tags.some((t) => t.name === toRemove.name)
+            );
+
+            if (otherAlbumsWithTag.length === 0)
+              return this.dbService
+                .delete<Tag>('tags', toRemove.id!)
+                .pipe(map(() => modifiedAlbum));
+
+            return EMPTY;
+          })
+        );
+      })
+    );
   }
 }

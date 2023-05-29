@@ -24,6 +24,7 @@
         <app-button-with-icon variant="remove"></app-button-with-icon>
     </div>
     <div class="expandedDetailsPanel">
+        <div *ngFor="let tag of album.tags; index as i;">{{tag.name}}</div>
         <h3>{{expandedInfo === 'tracks' ? 'Tracks' : 'Tags'}}</h3>
         <table *ngIf="expandedInfo==='tracks'" class="tracksTable">
             <tr>

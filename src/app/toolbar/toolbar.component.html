@@ -8,34 +8,25 @@
 
     <div class="toolbarChild">
         <app-select 
-            [multiple]="false"
             label="Sort"
+            [multiple]="false"
             iconSrc="assets/icons/sort-dsc.svg"
             altIconSrc="assets/icons/sort-asc.svg"
-            [options]="[
-                {label: 'Title', value: 'title'},
-                {label: 'Artist', value: 'artist'},
-                {label: 'Released Date', value: 'releasedAt'},
-                {label: 'Added Date', value: 'addedAt'}
-            ]"
+            [options]="sortingOptions"
             defaultValue="addedAt"
-            (selectedEvent)="onSort($event.toString())"
             [clickableIcon]="true"
+            (selectedEvent)="onSort($event.toString())"
             (clickedIconEvent)="onChangeSortDirection()"
         />
     </div>
     <div class="toolbarChild">
         <app-select 
-            [multiple]="true"
             label="Filter"
+            [multiple]="true"
             iconSrc="assets/icons/filter.svg"
-            [options]="[
-                {label: 'Option1', value: 'option1'},
-                {label: 'Option2', value: 'option2'},
-                {label: 'Option3', value: 'option3'},
-                {label: 'Option4', value: 'option4'}
-            ]"
+            [options]="filteringOptions"
             [clickableIcon]="false"
+            (selectedEvent)="onFilter(castSelectedToArray($event))"
         />
     </div>
 
