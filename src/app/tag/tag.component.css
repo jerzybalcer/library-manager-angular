@@ -1,0 +1,23 @@
+.container {
+  border-radius: 24px;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nameText {
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+img {
+  cursor: pointer;
+  opacity: 0.8;
+}

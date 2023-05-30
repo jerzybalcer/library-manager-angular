@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Album } from '../../models/album.interface';
 import { LocalDB } from 'src/services/local-db/local-db.service';
 import { SpotifyApi } from 'src/services/spotify/spotify-api.service';
@@ -13,7 +13,7 @@ import { AlbumsQueries } from 'src/services/albums/albums-queries';
   providers: [SpotifyApi, LocalDB],
 })
 export class AlbumsPresenterComponent {
-  private albums: Album[] = [];
+  private _albums: Album[] = [];
   private searchPhrase: string = '';
   private sortBy: SortBy = 'addedAt';
   private isSortAscending: boolean = false;
@@ -22,26 +22,18 @@ export class AlbumsPresenterComponent {
   displayAs: AlbumsViewType = 'grid';
   visibleAlbums: Album[] = [];
 
+  @Input() set albums(value: Album[]) {
+    this._albums = value;
+    this.queryAlbums();
+  }
+
+  get albums() {
+    return this._albums;
+  }
+
   @Output() chooseAlbumEvent: EventEmitter<Album> = new EventEmitter<Album>();
 
-  constructor(
-    private spotifyApi: SpotifyApi,
-    private localDB: LocalDB,
-    private albumsQueries: AlbumsQueries
-  ) {}
-
-  async ngOnInit() {
-    this.albums = await this.localDB.loadAllAlbums();
-    this.visibleAlbums = this.albums;
-
-    this.spotifyApi.getAllAlbums().then(async (albums) => {
-      await this.localDB.sync(albums);
-      this.albums = await this.localDB.loadAllAlbums();
-      this.visibleAlbums = this.albums;
-
-      this.queryAlbums();
-    });
-  }
+  constructor(private localDB: LocalDB, private albumsQueries: AlbumsQueries) {}
 
   onChooseAlbum(album: Album) {
     this.chooseAlbumEvent.emit(album);
@@ -71,9 +63,11 @@ export class AlbumsPresenterComponent {
     this.displayAs = this.displayAs === 'grid' ? 'list' : 'grid';
   }
 
-  async loadAlbums() {
+  async loadAlbums(): Promise<Album[]> {
     this.albums = await this.localDB.loadAllAlbums();
     this.queryAlbums();
+
+    return this.albums;
   }
 
   private queryAlbums() {

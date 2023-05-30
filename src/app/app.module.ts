@@ -21,6 +21,8 @@ import { SelectComponent } from './select/select.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { dbConfig } from 'src/services/local-db/db-config';
 import { AlbumsQueries } from 'src/services/albums/albums-queries';
+import { TagComponent } from './tag/tag.component';
+import { TagAdderComponent } from './tag-adder/tag-adder.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { AlbumsQueries } from 'src/services/albums/albums-queries';
     AlbumsViewSwitchComponent,
     SelectComponent,
     SearchbarComponent,
+    TagComponent,
+    TagAdderComponent,
   ],
   imports: [
     BrowserModule,

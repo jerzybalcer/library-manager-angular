@@ -1,5 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { LocalDB } from 'src/services/local-db/local-db.service';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Tag } from 'src/models/tag.interface';
 import { SelectOption } from 'src/models/select-option.interface';
 
@@ -11,6 +10,15 @@ import { SelectOption } from 'src/models/select-option.interface';
 export class ToolbarComponent {
   sortIcon: 'sort-dsc' | 'sort-asc' = 'sort-dsc';
   filteringOptions: SelectOption[] = [];
+
+  private _tags: Tag[] = [];
+
+  @Input() set tags(tags: Tag[]) {
+    this.filteringOptions = tags.map((tag) => {
+      return { label: tag.name, value: tag.name, color: tag.color };
+    });
+  }
+
   readonly sortingOptions: SelectOption[] = [
     { label: 'Title', value: 'title' },
     { label: 'Artist', value: 'artist' },
@@ -24,12 +32,6 @@ export class ToolbarComponent {
     new EventEmitter<void>();
   @Output() filterEvent: EventEmitter<string[]> = new EventEmitter<string[]>();
   @Output() switchViewEvent: EventEmitter<void> = new EventEmitter<void>();
-
-  constructor(private readonly localDB: LocalDB) {}
-
-  async ngOnInit() {
-    this.filteringOptions = await this.getFilteringOptions();
-  }
 
   onSearch(phrase: string) {
     this.searchEvent.emit(phrase);
@@ -52,21 +54,7 @@ export class ToolbarComponent {
     this.switchViewEvent.emit();
   }
 
-  async refetchFilteringOptions() {
-    this.filteringOptions = await this.getFilteringOptions();
-  }
-
   castSelectedToArray(selected: string | string[]) {
     return selected as string[];
-  }
-
-  private async getFilteringOptions(): Promise<SelectOption[]> {
-    const tags: Tag[] = await this.localDB.loadAllTags();
-
-    const selectOptions: SelectOption[] = tags.map((tag) => {
-      return { label: tag.name, value: tag.name, color: tag.color };
-    });
-
-    return selectOptions;
   }
 }

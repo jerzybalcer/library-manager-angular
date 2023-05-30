@@ -13,15 +13,21 @@
                 (changeSortDirectionEvent)="presenter.onChangeSortDirection()"
                 (filterEvent)="presenter.onFilter($event)"
                 (switchViewEvent)="presenter.onSwitchView()"
+                [tags]="tags"
                 />
             <app-user-info />
         </div>
     
         <div class="content">
-            <app-albums-presenter #presenter (chooseAlbumEvent)="onChooseAlbum($event)" />
+            <app-albums-presenter #presenter 
+                (chooseAlbumEvent)="onChooseAlbum($event)" 
+                [albums]="albums"
+            />
             <app-album-details 
+                *ngIf="chosenAlbum.title"
                 [album]="chosenAlbum" 
-                (tagsChangedEvent)="toolbar.refetchFilteringOptions(); presenter.loadAlbums()"/>
+                [allTags]="tags"
+                (tagsChangedEvent)="reloadData()"/>
         </div>
     </div>
 </div>

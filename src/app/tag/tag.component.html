@@ -1,0 +1,9 @@
+<div class="container" [ngStyle]="{backgroundColor: tag.color}">
+    <div class="content">
+        <span class="nameText" [style.color]="textColor">{{tag.name}}</span>
+        <img src="assets/icons/circle-x.svg" 
+            [ngStyle]="{filter: invertIconColor ? 'invert(100%)' : 'invert(0%)'}"
+            (click)="onRemove()"
+        />
+    </div>
+</div>

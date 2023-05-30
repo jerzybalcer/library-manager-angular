@@ -116,7 +116,7 @@ export class LocalDB {
                 .delete<Tag>('tags', toRemove.id!)
                 .pipe(map(() => modifiedAlbum));
 
-            return EMPTY;
+            return of(modifiedAlbum);
           })
         );
       })

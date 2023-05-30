@@ -43,7 +43,7 @@
 }
 
 h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
 }
 
 .tracksTable th {
@@ -76,6 +76,15 @@ h3 {
   overflow: hidden;
   width: 95%;
   white-space: nowrap;
+}
+
+.tagsList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 img {

@@ -1,0 +1,34 @@
+<div class="container" (click)="onClick()" (keydown)="onKeyDown($event)">
+    <input class="input"
+        #textInput
+        type="text" 
+        placeholder="New Tag"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur($event)"
+    />
+
+    <div *ngIf="isDropdownOpen" class="dropdown">
+        <div *ngFor="let tag of tagsAfterSearch" 
+            class="option"
+            tabindex="-1"
+            (click)="onAdd(tag, $event)"
+        >
+            {{tag.name}}
+        </div>
+
+        <div *ngIf="tagsAfterSearch.length === 0 && inputText" 
+            class="option"
+            tabindex="-1"
+            (click)="onAdd({name: inputText, color: '#ff00ff'}, $event)"
+        >
+            {{'New: ' + inputText}}
+        </div>
+        <div *ngIf="tagsAfterSearch.length === 0 && !inputText"
+            class="option disabled"
+            tabindex="-1"
+        >
+            No Tags yet
+        </div>
+    </div>
+</div>
