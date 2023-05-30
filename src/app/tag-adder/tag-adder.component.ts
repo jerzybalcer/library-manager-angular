@@ -60,6 +60,11 @@ export class TagAdderComponent {
 
   onAdd(tag: Tag, event: MouseEvent) {
     event.stopPropagation();
+
+    // Temporary solution, generate random color
+    if (!tag.color)
+      tag.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
     this.addEvent.emit(tag);
     this.deactivate();
   }

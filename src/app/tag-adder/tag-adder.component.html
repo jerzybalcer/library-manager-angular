@@ -20,7 +20,7 @@
         <div *ngIf="tagsAfterSearch.length === 0 && inputText" 
             class="option"
             tabindex="-1"
-            (click)="onAdd({name: inputText, color: '#ff00ff'}, $event)"
+            (click)="onAdd({name: inputText, color: ''}, $event)"
         >
             {{'New: ' + inputText}}
         </div>
