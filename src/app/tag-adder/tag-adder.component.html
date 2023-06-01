@@ -1,28 +1,42 @@
+<div class="label">ADD</div>
 <div class="container" (click)="onClick()" (keydown)="onKeyDown($event)">
-    <input class="input"
-        #textInput
-        type="text" 
-        placeholder="New Tag"
-        (input)="onInput($event)"
-        (focus)="onFocus()"
-        (blur)="onBlur($event)"
-    />
-
+    <div class="content">
+        <img src="assets/icons/plus.svg" />
+        <input class="input"
+            #textInput
+            type="text" 
+            placeholder="Choose / create tag"
+            (input)="onInput($event)"
+            (focus)="onFocus()"
+            (blur)="onBlur($event)"
+        />
+    </div>
+    
     <div *ngIf="isDropdownOpen" class="dropdown">
-        <div *ngFor="let tag of tagsAfterSearch" 
-            class="option"
-            tabindex="-1"
-            (click)="onAdd(tag, $event)"
-        >
-            {{tag.name}}
-        </div>
-
-        <div *ngIf="tagsAfterSearch.length === 0 && inputText" 
+        <div *ngIf="inputText && (tagsAfterSearch.length === 0 || tagsAfterSearch[0]?.name !== inputText)" 
             class="option"
             tabindex="-1"
             (click)="onAdd({name: inputText, color: ''}, $event)"
         >
-            {{'New: ' + inputText}}
+            <img src="assets/icons/plus.svg"/>
+            <span>{{inputText}}</span>
+        </div>
+        <div *ngFor="let tag of tagsAfterSearch" class="optionWrapper">
+            <div *ngIf="isAlreadyAssigned(tag)"
+                class="option alreadyAssigned tag"
+                tabindex="-1"
+            >
+                <div class="badge" [style.backgroundColor]="tag.color"></div>
+                <span>{{tag.name}}</span>
+            </div>
+            <div *ngIf="!isAlreadyAssigned(tag)"
+                class="option tag"
+                tabindex="-1"
+                (click)="onAdd(tag, $event)"
+            >
+                <div class="badge" [style.backgroundColor]="tag.color"></div>             
+                <span>{{tag.name}}</span>
+            </div>
         </div>
         <div *ngIf="tagsAfterSearch.length === 0 && !inputText"
             class="option disabled"

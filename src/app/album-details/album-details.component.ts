@@ -15,19 +15,23 @@ export class AlbumDetailsComponent {
 
   @Input() set album(album: Album) {
     this._album = album;
-    this.assignableTags = this.getOnlyAssignableTags(this._allTags);
+    this.assignedTags = this._album.tags;
   }
 
   @Input() set allTags(tags: Tag[]) {
     this._allTags = tags;
-    this.assignableTags = this.getOnlyAssignableTags(tags);
+    this.assignedTags = this._album.tags;
   }
 
   get album() {
     return this._album;
   }
 
-  assignableTags: Tag[] = [];
+  get allTags() {
+    return this._allTags;
+  }
+
+  assignedTags: Tag[] = [];
   expandedInfo: CurrentlyExpandedDetails = 'tags';
 
   @Output() tagsChangedEvent: EventEmitter<void> = new EventEmitter<void>();
@@ -42,8 +46,8 @@ export class AlbumDetailsComponent {
     navigator.clipboard.writeText(this.album.spotifyUrl);
   }
 
-  onSwitchExpandedDetails() {
-    this.expandedInfo = this.expandedInfo === 'tracks' ? 'tags' : 'tracks';
+  onChangeExpandedDetails(value: CurrentlyExpandedDetails) {
+    this.expandedInfo = value;
   }
 
   onTagRemove(tag: Tag) {
@@ -58,11 +62,5 @@ export class AlbumDetailsComponent {
       this.album = modified;
       this.tagsChangedEvent.emit();
     });
-  }
-
-  private getOnlyAssignableTags(allTags: Tag[]) {
-    return allTags.filter(
-      (tag) => !this.album.tags.some((albumTag) => albumTag.name === tag.name)
-    );
   }
 }

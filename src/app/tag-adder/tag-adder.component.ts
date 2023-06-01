@@ -16,7 +16,16 @@ import { Tag } from 'src/models/tag.interface';
 export class TagAdderComponent {
   @ViewChild('textInput') textInputElement!: ElementRef;
 
-  @Input() assignableTags: Tag[] = [];
+  private _allTags: Tag[] = [];
+
+  @Input() assignedTags: Tag[] = [];
+  @Input() set allTags(allTags: Tag[]) {
+    this._allTags = allTags;
+  }
+
+  get allTags() {
+    return this._allTags.sort((t) => (this.isAlreadyAssigned(t) ? 1 : -1));
+  }
 
   isDropdownOpen: boolean = false;
   tagsAfterSearch: Tag[] = [];
@@ -25,7 +34,7 @@ export class TagAdderComponent {
   @Output() addEvent: EventEmitter<Tag> = new EventEmitter<Tag>();
 
   async ngOnInit() {
-    this.tagsAfterSearch = this.assignableTags;
+    this.tagsAfterSearch = this.allTags;
   }
 
   onClick() {
@@ -47,9 +56,11 @@ export class TagAdderComponent {
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
 
-    this.inputText = target.value;
+    this.inputText = target.value.trim().toUpperCase();
 
     this.tagsAfterSearch = this.searchExisting(this.inputText);
+
+    this.textInputElement.nativeElement.value = this.inputText.toUpperCase();
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -77,10 +88,16 @@ export class TagAdderComponent {
   }
 
   private searchExisting(searchPhrase: string) {
-    if (searchPhrase) {
-      return this.assignableTags;
+    if (!searchPhrase) {
+      return this.allTags;
     } else {
-      return this.assignableTags.filter((t) => t.name.includes(searchPhrase));
+      return this.allTags.filter((t) =>
+        t.name.toLowerCase().includes(searchPhrase.toLowerCase())
+      );
     }
+  }
+
+  isAlreadyAssigned(tag: Tag) {
+    return this.assignedTags.some((t) => t.name == tag.name);
   }
 }

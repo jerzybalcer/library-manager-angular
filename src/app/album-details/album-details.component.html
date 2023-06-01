@@ -18,35 +18,57 @@
         <app-button-with-icon variant="link" (clickEvent)="onCopyLinkButtonClick()"></app-button-with-icon>
         <app-button-with-icon variant="remove"></app-button-with-icon>
     </div>
+    <hr />
     <div class="expandedDetailsPanel">
-        <table *ngIf="expandedInfo==='tracks'" class="tracksTable">
-            <tr>
-                <th>#</th>
-                <th>Title</th>
-            </tr>
-            <tr class="tableSpacer"></tr>
-            <tr *ngFor="let track of album.tracks; index as i;">
-                <td class="trackNumberText">{{i + 1}}</td>
-                <td>
-                    <div>
-                        <div>{{track.title}}</div>
-                        <div class="trackArtists">{{track.artists.join(', ')}}</div>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div class="expandedDetailsHeader">
+            <h3 [ngClass]="expandedInfo === 'tags' ? '' : 'inactiveHeader'"
+                (click)="onChangeExpandedDetails('tags')"
+            >
+                Tags
+            </h3>
+            <h3 [ngClass]="expandedInfo === 'tracks' ? '' : 'inactiveHeader'"
+                (click)="onChangeExpandedDetails('tracks')"
+            >
+                Tracks
+            </h3>
+        </div>
+
         <div *ngIf="expandedInfo === 'tags'">
-            <h3>Tags</h3>
+            <app-tag-adder 
+                (addEvent)="onTagAdd($event)" 
+                [allTags]="allTags"
+                [assignedTags]="assignedTags"
+            />
+ 
+            <div *ngIf="album.tags.length !== 0" class="label">ASSIGNED</div>
+            <p *ngIf="album.tags.length === 0">
+                No tags assigned to this album yet.
+            </p>
             <div class="tagsList">
-                <app-tag-adder 
-                    (addEvent)="onTagAdd($event)" 
-                    [assignableTags]="assignableTags"
-                />
                 <app-tag *ngFor="let tag of album.tags;" 
                     [tag]="tag" 
                     (removedEvent)="onTagRemove($event)"
             />
             </div>            
+        </div>
+
+        <div *ngIf="expandedInfo === 'tracks'" class="tracksPanel">
+            <table *ngIf="true" class="tracksTable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let track of album.tracks; index as i;">
+                    <td class="trackNumberText">{{i + 1}}</td>
+                    <td>
+                        <div>
+                            <div>{{track.title}}</div>
+                            <div class="trackArtists">{{track.artists.join(', ')}}</div>
+                        </div>
+                    </td>
+                </tr>
+                <div class="rowSpacer"></div>
+            </table>
         </div>
     </div>
 </div>

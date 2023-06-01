@@ -1,7 +1,9 @@
 .container {
   border-radius: 24px;
-  padding: 8px 12px;
+  padding: 0.7vh 0.7vw;
   display: inline-block;
+  outline: solid 2px var(--jet);
+  background-color: var(--black);
 }
 
 .content {
@@ -9,15 +11,25 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
 }
 
 .nameText {
-  font-size: 1vw;
+  font-size: 0.8vw;
   font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.dot {
+  width: 0.9vw;
+  height: 0.9vw;
+  border-radius: 50%;
 }
 
 img {
   cursor: pointer;
   opacity: 0.8;
+  width: 0.8vw;
+  height: 0.8vw;
+  filter: invert(100%);
 }

@@ -1,8 +1,8 @@
-<div class="container" [ngStyle]="{backgroundColor: tag.color}">
+<div class="container">
     <div class="content">
-        <span class="nameText" [style.color]="textColor">{{tag.name}}</span>
-        <img src="assets/icons/circle-x.svg" 
-            [ngStyle]="{filter: invertIconColor ? 'invert(100%)' : 'invert(0%)'}"
+        <div class="dot" [style.backgroundColor]="tag.color"></div>
+        <span class="nameText">{{tag.name | uppercase}}</span>
+        <img src="assets/icons/x.svg" 
             (click)="onRemove()"
         />
     </div>

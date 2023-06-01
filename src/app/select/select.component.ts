@@ -12,8 +12,17 @@ export class SelectComponent {
   selected: SelectOption | SelectOption[] = {} as SelectOption;
   currentIconSrc: string = '';
 
+  private _options: SelectOption[] = [];
+
+  get options() {
+    return this._options;
+  }
+
   @Input() multiple: boolean = false;
-  @Input() options: SelectOption[] = [];
+  @Input() set options(options: SelectOption[]) {
+    this._options = options;
+    this.reselectAfterOptionsReload(options);
+  }
   @Input() defaultValue: string = '';
   @Input() iconSrc: string = '';
   @Input() altIconSrc: string = '';
@@ -79,5 +88,13 @@ export class SelectComponent {
         this.options.find((o) => o.value === this.defaultValue) ??
         ({} as SelectOption);
     }
+  }
+
+  private reselectAfterOptionsReload(newOptions: SelectOption[]) {
+    const selected = this.selected as SelectOption[];
+
+    this.selected = newOptions.filter((o) =>
+      selected.some((s) => s.value === o.value)
+    );
   }
 }

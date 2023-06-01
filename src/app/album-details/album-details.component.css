@@ -16,10 +16,20 @@
   padding: 16px;
 }
 
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--grey);
+  margin: 1em 8px;
+  padding: 0;
+  opacity: 0.3;
+}
+
 .buttonsPanel {
   display: flex;
   flex-direction: row;
-  margin: 0px 16px 32px 16px;
+  margin: 0px 16px 8px 16px;
   gap: 16px;
 }
 
@@ -35,15 +45,28 @@
   font-weight: 300;
 }
 
+.expandedDetailsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.inactiveHeader {
+  opacity: 0.4;
+  cursor: pointer;
+}
+
 .tracksTable {
   width: 100%;
   table-layout: fixed;
-  line-height: 2.75vh;
   border-collapse: collapse;
 }
 
 h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 24px 0;
 }
 
 .tracksTable th {
@@ -51,12 +74,7 @@ h3 {
   font-weight: 400;
   text-align: start;
   table-layout: auto;
-  border-bottom: 1px solid rgba(147, 147, 147, 0.4);
   border-spacing: 100px;
-}
-
-.tableSpacer {
-  height: 2vh;
 }
 
 .tracksTable td:first-child {
@@ -65,17 +83,29 @@ h3 {
 }
 
 .tracksTable th:first-child {
-  width: 48px;
+  width: 64px;
   padding-left: 16px;
 }
 
+.tracksTable td {
+  padding-bottom: 12px;
+}
+
 .trackArtists {
-  font-size: 0.75vw;
+  font-size: 0.8vw;
   color: var(--grey);
   text-overflow: ellipsis;
   overflow: hidden;
   width: 95%;
   white-space: nowrap;
+}
+
+.label {
+  margin-left: 8px;
+  margin-bottom: 2px;
+  font-size: 14px;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .tagsList {
@@ -84,12 +114,14 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 12px 12px;
 }
 
 img {
-  width: 40%;
+  width: 30%;
   margin-right: 24px;
+  box-shadow: 8px 8px 16px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .info {
