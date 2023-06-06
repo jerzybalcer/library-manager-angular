@@ -1,5 +1,5 @@
-div {
-  border-radius: 50%;
+.container {
+  border-radius: 24px;
   color: #000;
   background-color: #2a2a2a;
   transition: filter 0.3s ease;
@@ -7,21 +7,39 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 12px;
   border: solid 1px transparent;
+  position: relative;
 }
 
-div:hover {
-  filter: brightness(130%);
+.container:hover {
+  filter: brightness(110%);
   transition: filter 0.3s ease;
+}
+
+.imgWrapper {
+  background-color: var(--amethyst);
+  position: absolute;
+  left: -1%;
+  border-radius: 24px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
   filter: invert(100%);
   user-select: none;
   -webkit-user-select: none;
-  width: 1.3vw;
+  width: 2rem;
 }
 
-img:hover {
-  fill: var(--amethyst);
+span {
+  color: var(--white);
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin-left: 2.2em;
+  margin-right: 0.2em;
+  opacity: 1;
 }

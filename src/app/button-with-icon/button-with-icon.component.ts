@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ButtonWithIconComponent {
   @Input() variant!: 'listen' | 'link' | 'remove';
+  @Input() text: string = '';
 
   @Output() clickEvent = new EventEmitter<void>();
 

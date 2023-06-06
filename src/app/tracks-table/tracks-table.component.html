@@ -1,0 +1,16 @@
+<table *ngIf="true" class="tracksTable">
+    <tr>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let track of tracks; index as i;">
+        <td class="trackNumberText">{{i + 1}}</td>
+        <td>
+            <div>
+                <div>{{track.title}}</div>
+                <div class="trackArtists">{{track.artists.join(', ')}}</div>
+            </div>
+        </td>
+    </tr>
+    <div class="rowSpacer"></div>
+</table>

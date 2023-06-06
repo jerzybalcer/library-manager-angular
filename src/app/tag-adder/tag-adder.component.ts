@@ -97,6 +97,10 @@ export class TagAdderComponent {
     }
   }
 
+  firstAlreadyAssignedIndex(tags: Tag[]) {
+    return tags.findIndex((t) => this.isAlreadyAssigned(t));
+  }
+
   isAlreadyAssigned(tag: Tag) {
     return this.assignedTags.some((t) => t.name == tag.name);
   }

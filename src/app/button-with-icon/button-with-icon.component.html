@@ -1,3 +1,6 @@
-<div (click)="onClick()" >
-    <img [src]="iconSrc" />
+<div (click)="onClick()" class="container">
+    <div class="imgWrapper">
+        <img [src]="iconSrc" />
+    </div>
+    <span>{{text | uppercase}}</span>
 </div>

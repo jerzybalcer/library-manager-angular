@@ -1,11 +1,11 @@
-<div class="label">ADD</div>
+<!-- <div class="label">ADD</div> -->
 <div class="container" (click)="onClick()" (keydown)="onKeyDown($event)">
     <div class="content">
         <img src="assets/icons/plus.svg" />
         <input class="input"
             #textInput
             type="text" 
-            placeholder="Choose / create tag"
+            placeholder="ADD"
             (input)="onInput($event)"
             (focus)="onFocus()"
             (blur)="onBlur($event)"
@@ -21,7 +21,16 @@
             <img src="assets/icons/plus.svg"/>
             <span>{{inputText}}</span>
         </div>
-        <div *ngFor="let tag of tagsAfterSearch" class="optionWrapper">
+        <div *ngFor="let tag of tagsAfterSearch; let i = index;" class="optionWrapper">
+            <div *ngIf="i === firstAlreadyAssignedIndex(allTags)" class="separator">
+                <hr />
+                <p>Assigned</p>
+            </div>
+
+            <div *ngIf="i === 0" class="separator">
+                <p>Available</p>
+            </div>
+
             <div *ngIf="isAlreadyAssigned(tag)"
                 class="option alreadyAssigned tag"
                 tabindex="-1"
