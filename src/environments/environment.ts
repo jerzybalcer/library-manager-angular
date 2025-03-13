@@ -3,6 +3,8 @@
 //     SpotifyRedirectUri: ''
 // };
 
+import * as process from "process";
+
 export const environment = {
     production: true,
     SpotifyClientId: process.env['NG_SpotifyClientId'],
