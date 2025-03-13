@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    SpotifyClientId: process.env['NG_SpotifyClientId'],
-    SpotifyRedirectUri: process.env['NG_SpotifyRedirectUri'],
+    SpotifyClientId: import.meta.env.NG_SPOTIFY_CLIENT_ID,
+    SpotifyRedirectUri: import.meta.env.NG_SPOTIFY_REDIRECT_URI,
 };
