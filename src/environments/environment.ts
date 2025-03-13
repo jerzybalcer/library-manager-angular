@@ -1,12 +1,4 @@
-// export const environment = {
-//     SpotifyClientId: '',
-//     SpotifyRedirectUri: ''
-// };
-
-import * as process from "process";
-
 export const environment = {
-    production: true,
-    SpotifyClientId: process.env['NG_SpotifyClientId'],
-    SpotifyRedirectUri: process.env['NG_SpotifyRedirectUri'],
+    SpotifyClientId: '',
+    SpotifyRedirectUri: ''
 };
